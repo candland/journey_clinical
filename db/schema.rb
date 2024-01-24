@@ -10,8 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_24_193716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "insurance_therapists", force: :cascade do |t|
+    t.bigint "insurance_id", null: false
+    t.bigint "therapist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["insurance_id"], name: "index_insurance_therapists_on_insurance_id"
+    t.index ["therapist_id"], name: "index_insurance_therapists_on_therapist_id"
+  end
+
+  create_table "insurances", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "therapists", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "remote", null: false
+    t.string "street", null: false
+    t.string "street_2"
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "zip", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "insurance_therapists", "insurances"
+  add_foreign_key "insurance_therapists", "therapists"
 end

@@ -1,0 +1,46 @@
+<div class="w-full flex flex-col gap-8">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Therapists</h1>
+    <%= link_to "New therapist", new_therapist_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <form>
+    <div class="flex flex-row gap-4 justify-start items-end" data-turbo-cache="false">
+      <div class="input flex flex-col">
+        <label for="insurance">Insurance</label>
+        <%= select_tag "insurance", options_from_collection_for_select(Insurance.all, "id", "name", params[:insurance]), include_blank: true %> 
+      </div>
+      <div class="input flex flex-col">
+        <label for="remote">Remote</label>
+        <%= select_tag "remote", options_from_collection_for_select([["yes", "Yes"], ["no", "No"]], "first", "second", params[:remote]), include_blank: true %> 
+      </div>
+      <div class="input flex flex-col">
+        <label for="city">City</label>
+        <%= select_tag "city", options_for_select(Constants::CITIES, params[:city]), include_blank: true %> 
+      </div>
+      <div class="">
+        <%= submit_tag "Filter", class: "rounded-lg py-2 px-5 bg-blue-600 text-white block font-medium" %>
+      </div>
+    </div>
+  </form>
+
+  <% if @therapists.empty? %>
+    <div class="py-24">
+      No therapists found
+    </div>
+  <% else %>
+    <div>
+      Found <%= pluralize(@pagy.count, "therapist") %>
+    </div>
+
+    <div id="therapists" class="min-w-full flex flex-col gap-8">
+      <%= render @therapists %>
+    </div>
+
+    <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+  <% end %>
+</div>

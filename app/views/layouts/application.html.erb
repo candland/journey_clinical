@@ -12,7 +12,16 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <nav class="flex flex-row justify-between gap-8 my-8 mx-4">
+      <h1 class="font-medium text-lg">
+        <%= link_to "Journey Clinical", root_path %>
+      </h1>
+      <div class="flex flex-row gap-3">
+        <%= link_to "Therapists", therapists_path %>
+        <%= link_to "Insurances", insurances_path %>
+      </div>
+    </nav>
+    <main class="container mx-auto mt-20 mb-16 px-5 flex">
       <%= yield %>
     </main>
   </body>

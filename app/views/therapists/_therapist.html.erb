@@ -1,0 +1,32 @@
+<div id="<%= dom_id therapist %>" class="flex flex-col gap-3 border rounded-lg shadow p-4">
+    <p class="flex flex-row justify-between">
+      <strong class="block font-medium mb-1"><%= therapist.name %></strong>
+      
+      <span>
+        Remote? <%= therapist.remote ? "Yes" : "No" %>
+      </span>
+    </p>
+
+    <p class="">
+      <strong class="block font-medium mb-1">Address:</strong>
+      <%= therapist.street %>
+      <br>
+      <% if therapist.street_2.present? %>
+        <%= therapist.street_2 %>
+        <br>
+      <% end %>
+      <%= therapist.city %>, <%= therapist.state %> <%= therapist.zip %>
+    </p>
+
+    <p class="">
+      <strong class="block font-medium mb-1">Insurance:</strong>
+      <%= therapist.insurances.pluck(:name).join(", ") %>
+    </p>
+
+    <% if action_name != "show" %>
+    <div>
+      <%= link_to "Show this therapist", therapist, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Edit this therapist", edit_therapist_path(therapist), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    </div>
+    <% end %>
+</div>

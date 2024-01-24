@@ -1,24 +1,30 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+```bash
+bin/rails db:create
+bin/rails db:migrate
+bin/rails db:seed
+```
 
-* Ruby version
+## Run
 
-* System dependencies
+```bash
+bin/foreman start -f Procfile.dev
+```
 
-* Configuration
+[https://localhost:5000](https://localhost:5000)
 
-* Database creation
+## Test
 
-* Database initialization
+```bash
+bin/rails test
+```
 
-* How to run the test suite
+## TODO
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Authentication for edits / creates OR remove them
+- Remove JSON handlers if not needed
+- Save filter params in session
+- Better filter tests
