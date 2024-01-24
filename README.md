@@ -14,7 +14,7 @@ bin/rails db:seed
 bin/foreman start -f Procfile.dev
 ```
 
-[https://localhost:5000](https://localhost:5000)
+[http://localhost:5000](http://localhost:5000)
 
 ## Test
 
