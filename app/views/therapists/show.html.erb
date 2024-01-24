@@ -6,10 +6,6 @@
 
     <%= render @therapist %>
 
-    <%= link_to "Edit this therapist", edit_therapist_path(@therapist), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this therapist", therapist_path(@therapist), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-    </div>
     <%= link_to "Back to therapists", therapists_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>

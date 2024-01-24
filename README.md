@@ -24,7 +24,6 @@ bin/rails test
 
 ## TODO
 
-- Authentication for edits / creates OR remove them
 - Remove JSON handlers if not needed
 - Save filter params in session
 - Better filter tests
